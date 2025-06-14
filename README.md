@@ -1,73 +1,88 @@
-# Welcome to your Lovable project
+Live Demo → https://thrivebeyourowng.vercel.app/
 
-## Project info
+# Thrive: Be Your Own G
 
-**URL**: https://lovable.dev/projects/6d0845fb-f2a5-41e9-b532-c2a7e110799c
+Thrive is a career and learning support platform tailored for students and fresh grads. It helps users streamline their job preparation through curated resources, resume optimization tools, and job alert links — all in one minimal, focused dashboard.
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+## Features
 
-**Use Lovable**
+### Curated Course Collections
+- Handpicked, high-impact courses for Software Development, DSA, Web Dev, and more
+- Focused content with no overwhelm
+- Free learning resources only — no sponsored fluff
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/6d0845fb-f2a5-41e9-b532-c2a7e110799c) and start prompting.
+### Ultimate Resume Guide with Overleaf Templates
+- Detailed resume-writing guide tailored for tech roles
+- Includes section-wise breakdown, formatting tips, and examples
+- Free Overleaf LaTeX templates ready to use
 
-Changes made via Lovable will be committed automatically to this repo.
+### ATS Resume Score Check
+- External links to top ATS resume checkers
+- Labelled as free or paid for transparency
+- Boost your chances of passing the first screening
 
-**Use your preferred IDE**
+### Resource Library
+- Downloadable PDFs, checklists, guides, and learning aids
+- Career prep and tech resources in one place
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### WhatsApp Job Alert Links
+- Curated list of active job-sharing WhatsApp groups
+- Domain-specific and regularly updated
+- Direct links for instant joining
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+---
 
-Follow these steps:
+## Tech Stack
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### Frontend
+- React – Component-based frontend
+- Tailwind CSS – Utility-first styling
+- JavaScript – Core logic
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### Backend
+- Node.js / Flask / Django – REST API options
+- PostgreSQL / MongoDB / Redis – Data storage
+- AWS S3 – File storage (for resumes/resources)
 
-# Step 3: Install the necessary dependencies.
-npm i
+### Integrations
+- External ATS platforms – Resume scoring tools
+- WhatsApp links – Job alert communities
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+---
 
-**Edit a file directly in GitHub**
+## Getting Started
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Prerequisites
+- Node.js (v18+)
+- npm or yarn
 
-**Use GitHub Codespaces**
+---
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Installation
 
-## What technologies are used for this project?
+```bash
+git clone https://github.com/RavikumarGoda/Thrive-Be-your-own-G.git
+cd Thrive-Be-your-own-G
+npm install
+Environment Setup
+Create a .env file in the root directory with necessary variables:
 
-This project is built with:
+env
+Copy
+Edit
+# Example
+PORT=3000
+DATABASE_URL=your_database_url
+Running Locally
+bash
+Copy
+Edit
+npm start
+Contact
+For issues, feature requests, or feedback, feel free to reach out:
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+GitHub: @RavikumarGoda
 
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/6d0845fb-f2a5-41e9-b532-c2a7e110799c) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+LinkedIn: Ravi Kumar Reddy Goda
