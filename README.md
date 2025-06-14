@@ -1,6 +1,6 @@
 # Thrive: Be Your Own G
 
-**Live Demo → [thrivebeyourowng.vercel.app](https://thrivebeyourowng.vercel.app/)**
+**Live Demo → [thrivebeyourowng.vercel.app](https://thrive-nu.vercel.app/)**
 
 Thrive is a career and learning support platform tailored for students and fresh grads. It helps users streamline their job preparation through curated resources, resume optimization tools, and job alert links — all in one minimal, focused dashboard.
 
