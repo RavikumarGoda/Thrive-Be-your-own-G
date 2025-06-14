@@ -20,7 +20,7 @@ export const Hero = () => {
   };
 
   return (
-    <section className="min-h-screen bg-gradient-to-br from-background to-muted py-20 flex items-center justify-center">
+    <section className="min-h-[calc(100vh-4rem)] bg-gradient-to-br from-background to-muted py-20 flex items-center justify-center">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <TypingAnimation />
