@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -11,55 +10,59 @@ const ResourcesPage = () => {
       name: 'HTML',
       icon: '🌐',
       color: 'from-orange-500 to-orange-600',
-      description: 'Web Structure'
+      description: 'Web Structure',
+      notesLink: 'https://drive.google.com/file/d/10l_B4Q8T5b3BHDEtkmB5jSwirBS5WIZo/view?usp=sharing'
     },
     {
       name: 'CSS',
       icon: '🎨',
       color: 'from-blue-500 to-blue-600',
-      description: 'Web Styling'
+      description: 'Web Styling',
+      notesLink: 'https://drive.google.com/file/d/1vBQCi0M-3gHjKW5WRcceclPGOxVET07f/view?usp=sharing'
     },
     {
       name: 'JavaScript',
       icon: '⚡',
       color: 'from-yellow-500 to-yellow-600',
-      description: 'Web Interactivity'
+      description: 'Web Interactivity',
+      notesLink: 'https://drive.google.com/file/d/1q0Zyqv3rn-MTTbLEjzPpugNTyOVJMAzA/view?usp=sharing'
     },
     {
       name: 'React',
       icon: '⚛️',
       color: 'from-cyan-500 to-cyan-600',
-      description: 'UI Library'
+      description: 'UI Library',
+      notesLink: 'https://drive.google.com/file/d/1Wrq1IYLVYpxRSH1T3TGZLjDmnbU01ksx/view?usp=sharing'
     },
     {
       name: 'Python',
       icon: '🐍',
       color: 'from-green-500 to-green-600',
-      description: 'General Purpose'
+      description: 'General Purpose',
+      notesLink: 'https://drive.google.com/file/d/1y4OM50r1vcwzvD_njM8kzLW7n5wGP10N/view?usp=sharing'
     },
     {
       name: 'Java',
       icon: '☕',
       color: 'from-red-500 to-red-600',
-      description: 'Enterprise Development'
+      description: 'Enterprise Development',
+      notesLink: 'https://drive.google.com/file/d/1EVqik9kZ1CTn5M-EWWdnuDFASgi2Y02P/view?usp=sharing'
     },
     {
-      name: 'CN,OS,DBMS',
+      name: 'CN,OS,DBMS,OODP',
       icon: '💾',
       color: 'from-purple-500 to-purple-600',
-      description: 'Core CS Concepts'
+      description: 'Core CS Concepts',
+      notesLink: 'https://drive.google.com/drive/folders/1fPL2Pxq_tqRVOxvMQxxRakBzX8NiNoQb?usp=sharing'
     },
     {
       name: 'DSA',
       icon: '🧮',
       color: 'from-indigo-500 to-indigo-600',
-      description: 'Data Structures & Algorithms'
+      description: 'Data Structures & Algorithms',
+      notesLink: 'https://github.com/RavikumarGoda/Data-Structures-and-Algorithms-Notes'
     }
   ];
-
-  const handleNotesClick = () => {
-    window.open('https://drive.google.com/drive/folders/1fPL2Pxq_tqRVOxvMQxxRakBzX8NiNoQb?usp=sharing', '_blank');
-  };
 
   return (
     <div className="min-h-screen text-foreground" style={{ backgroundColor: 'rgb(30, 41, 59)' }}>
@@ -72,10 +75,10 @@ const ResourcesPage = () => {
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {programmingLanguages.map((lang, index) => (
-            <Card 
-              key={index} 
+            <Card
+              key={index}
               className="bg-slate-800 border-slate-700 hover:shadow-lg transition-all duration-300 cursor-pointer group backdrop-blur-sm"
-              onClick={handleNotesClick}
+              onClick={() => window.open(lang.notesLink, '_blank')}
             >
               <CardContent className="p-6 text-center">
                 <div className="mb-4 text-4xl group-hover:scale-110 transition-transform duration-300">
@@ -87,7 +90,7 @@ const ResourcesPage = () => {
                 <p className="text-sm text-gray-300 mb-4">
                   {lang.description}
                 </p>
-                <Button 
+                <Button
                   size="sm"
                   className="w-full bg-primary hover:bg-primary/90 text-primary-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                 >
