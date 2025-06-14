@@ -60,29 +60,30 @@ Thrive is a career and learning support platform tailored for students and fresh
 
 ---
 
-### Installation
+## Installation
 
 ```bash
 git clone https://github.com/RavikumarGoda/Thrive-Be-your-own-G.git
 cd Thrive-Be-your-own-G
 npm install
-Environment Setup
-Create a .env file in the root directory with necessary variables:
 
-env
-Copy
-Edit
+## Environment Setup
+
+Create a `.env` file in the root directory with the following variables:
+
+```env
 # Example
 PORT=3000
 DATABASE_URL=your_database_url
-Running Locally
-bash
-Copy
-Edit
+
+## Running Locally
+
+```bash
 npm start
-Contact
+
+## Contact
+
 For issues, feature requests, or feedback, feel free to reach out:
 
-GitHub: @RavikumarGoda
-
-LinkedIn: Ravi Kumar Reddy Goda
+- GitHub: [@RavikumarGoda](https://github.com/RavikumarGoda)  
+- LinkedIn: [Ravi Kumar Reddy Goda](https://www.linkedin.com/in/ravikumargoda)
