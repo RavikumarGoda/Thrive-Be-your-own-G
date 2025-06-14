@@ -67,12 +67,23 @@ git clone https://github.com/RavikumarGoda/Thrive-Be-your-own-G.git
 cd Thrive-Be-your-own-G
 npm install
 ---
+⚙️ Environment Setup
+Create a .env file in the root directory with the following variables:
 
-### ⚙️ Environment Setup
-
-Create a `.env` file in the root directory with the following variables:
-
-```env
+env
+Copy
+Edit
 # Example
 PORT=3000
 DATABASE_URL=your_database_url
+🚀 Running Locally
+bash
+Copy
+Edit
+npm start
+📬 Contact
+For issues, feature requests, or feedback, feel free to reach out:
+
+GitHub: @RavikumarGoda
+
+LinkedIn: Ravi Kumar Reddy Goda
