@@ -65,34 +65,38 @@ const ResourcesPage = () => {
   ];
 
   return (
-    <div className="min-h-screen text-foreground" style={{ backgroundColor: 'rgb(30, 41, 59)' }}>
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-foreground">
       <Navbar />
       <div className="container mx-auto px-4 py-24 max-w-6xl">
-        <div className="text-center mb-12">
-          <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">Study Notes</h1>
-          <p className="text-gray-300 text-base md:text-lg">Access comprehensive study materials for interviews</p>
+        <div className="text-center mb-16">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">
+            📚 Study Notes for Success
+          </h1>
+          <p className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto">
+            Unlock crisp and curated resources to ace your technical interviews and CS subjects.
+          </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {programmingLanguages.map((lang, index) => (
             <Card
               key={index}
-              className="bg-slate-800 border-slate-700 hover:shadow-lg transition-all duration-300 cursor-pointer group backdrop-blur-sm"
+              className="bg-slate-800/50 backdrop-blur-md border border-slate-700 hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer group rounded-2xl"
               onClick={() => window.open(lang.notesLink, '_blank')}
             >
               <CardContent className="p-6 text-center">
-                <div className="mb-4 text-4xl group-hover:scale-110 transition-transform duration-300">
+                <div className="mb-4 text-4xl transition-transform duration-300 group-hover:scale-125">
                   {lang.icon}
                 </div>
-                <h3 className="text-lg font-bold text-white mb-2 group-hover:text-primary transition-colors">
+                <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-primary transition-colors">
                   {lang.name}
                 </h3>
-                <p className="text-sm text-gray-300 mb-4">
+                <p className="text-sm text-gray-400 mb-6">
                   {lang.description}
                 </p>
                 <Button
                   size="sm"
-                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground transition-all duration-200"
                 >
                   <ExternalLink size={14} className="mr-2" />
                   Get Notes
