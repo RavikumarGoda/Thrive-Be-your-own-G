@@ -1,5 +1,5 @@
-
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -41,67 +41,54 @@ const CoursesPage = () => {
 
   const getDifficultyColor = (difficulty?: string) => {
     switch (difficulty?.toLowerCase()) {
-      case 'beginner': return 'bg-green-600';
+      case 'beginner': return 'bg-green-700';
       case 'intermediate': return 'bg-yellow-600';
-      case 'advanced': return 'bg-red-600';
+      case 'advanced': return 'bg-red-700';
       default: return 'bg-gray-600';
     }
   };
 
-  const getAdditionalLink = (category: string) => {
-    if (category === 'DSA') {
-      return {
-        url: 'https://takeuforward.org/strivers-a2z-dsa-course/strivers-a2z-dsa-course-sheet-2/',
-        text: 'Striver\'s A2Z DSA Sheet'
-      };
-    }
-    if (category === 'Web Development') {
-      return {
-        url: 'https://www.codewithharry.com/',
-        text: 'CodeWithHarry Website'
-      };
-    }
-    return null;
-  };
-
   const getVideoThumbnail = (videoUrl: string) => {
-    // Extract YouTube video ID from URL
     const match = videoUrl.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\n?#]+)/);
     const videoId = match ? match[1] : null;
-    
-    if (videoId) {
-      return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
-    }
-    
-    // Fallback for other video platforms or custom thumbnails
-    return '/placeholder.svg';
+    return videoId ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg` : '/placeholder.svg';
   };
 
   return (
-    <div className="min-h-screen text-foreground" style={{ backgroundColor: 'rgb(30, 41, 59)' }}>
+    <div className="min-h-screen bg-gradient-to-b from-slate-900 to-slate-950 text-white">
       <Navbar />
-      <div className="container mx-auto px-4 py-24 max-w-6xl">
-        <div className="text-center mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">Curated Courses</h1>
-          <p className="text-gray-300 text-base md:text-lg">Hand-picked video courses to accelerate your learning</p>
-        </div>
+      <div className="container mx-auto px-4 py-20 max-w-6xl">
+        <motion.div
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-100">
+            Curated Courses
+          </h1>
+          <p className="text-gray-400 max-w-xl mx-auto text-base md:text-lg">
+            Hand-picked content to help you get ahead faster, smarter, cooler.
+          </p>
+        </motion.div>
 
         {loading ? (
-          <div className="text-center py-12">
-            <div className="text-gray-300">Loading courses...</div>
-          </div>
+          <div className="text-center text-gray-400">Loading courses...</div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {courses.map(course => {
-              const additionalLink = getAdditionalLink(course.category);
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {courses.map((course, index) => {
               const thumbnailUrl = course.thumbnail_url || getVideoThumbnail(course.video_url);
-              
               return (
-                <Card key={course.id} className="bg-slate-800 border-slate-700 hover:shadow-lg transition-shadow overflow-hidden">
-                  {/* Thumbnail Section */}
-                  <div className="relative aspect-video w-full overflow-hidden">
-                    <img 
-                      src={thumbnailUrl} 
+                <motion.div
+                  key={course.id}
+                  className="bg-slate-800 rounded-xl overflow-hidden border border-slate-700 hover:shadow-xl transition-shadow flex flex-col justify-between"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.05 }}
+                >
+                  <div className="relative aspect-video">
+                    <img
+                      src={thumbnailUrl}
                       alt={course.title}
                       className="w-full h-full object-cover"
                       onError={(e) => {
@@ -109,74 +96,66 @@ const CoursesPage = () => {
                         target.src = '/placeholder.svg';
                       }}
                     />
-                    <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity cursor-pointer"
-                         onClick={() => window.open(course.video_url, '_blank')}>
-                      <Play className="text-white w-16 h-16" />
+                    <div
+                      className="absolute inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity cursor-pointer"
+                      onClick={() => window.open(course.video_url, '_blank')}
+                    >
+                      <Play className="text-white w-12 h-12" />
                     </div>
                   </div>
 
-                  <CardHeader className="pb-3">
-                    <div className="flex items-start justify-between mb-2">
-                      <CardTitle className="text-lg leading-tight flex-1 text-white">
-                        {course.title}
-                      </CardTitle>
-                      <BookOpen className="text-primary flex-shrink-0 ml-2" size={20} />
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                      <Badge variant="secondary" className="text-xs">
-                        {course.category}
-                      </Badge>
-                      {course.difficulty && (
-                        <Badge className={`text-xs ${getDifficultyColor(course.difficulty)}`}>
-                          {course.difficulty}
-                        </Badge>
-                      )}
-                    </div>
-                  </CardHeader>
-                  
-                  <CardContent>
-                    <p className="text-gray-300 text-sm mb-4 line-clamp-3">
-                      {course.description}
-                    </p>
-                    
-                    {course.duration && (
-                      <div className="flex items-center gap-2 mb-4 text-gray-300 text-sm">
-                        <Clock size={16} />
-                        <span>{course.duration}</span>
+                  <div className="p-5 flex flex-col justify-between h-full">
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between">
+                        <h3 className="text-lg font-semibold text-white truncate">
+                          {course.title}
+                        </h3>
+                        <BookOpen className="text-primary" size={18} />
                       </div>
-                    )}
 
-                    <div className="space-y-2">
+                      <p className="text-gray-400 text-sm line-clamp-2">{course.description}</p>
+
+                      <div className="flex flex-wrap items-center gap-2 text-xs min-h-[24px]">
+                        <Badge className="bg-slate-600 text-white">{course.category}</Badge>
+                        {course.difficulty && (
+                          <Badge className={`${getDifficultyColor(course.difficulty)} text-white`}>
+                            {course.difficulty}
+                          </Badge>
+                        )}
+                        {course.duration && (
+                          <div className="flex items-center gap-1 text-gray-300">
+                            <Clock size={14} />
+                            <span>{course.duration}</span>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+
+                    <div className="pt-4 space-y-2">
                       <Button
                         onClick={() => window.open(course.video_url, '_blank')}
-                        className="w-full bg-primary hover:bg-primary/90 flex items-center gap-2"
+                        className="w-full bg-gray-100 text-black hover:bg-white"
                       >
-                        <Play size={16} />
-                        Watch Course
+                        <Play size={16} /> Watch
                       </Button>
-                      
-                      {additionalLink && (
-                        <Button
-                          onClick={() => window.open(additionalLink.url, '_blank')}
-                          variant="outline"
-                          className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground flex items-center gap-2"
-                        >
-                          <ExternalLink size={16} />
-                          {additionalLink.text}
-                        </Button>
-                      )}
+
+                      <Button
+                        onClick={() => window.open(course.video_url, '_blank')}
+                        variant="outline"
+                        className="w-full border-gray-500 text-gray-200 hover:bg-slate-700"
+                      >
+                        <ExternalLink size={16} /> Open Video
+                      </Button>
                     </div>
-                  </CardContent>
-                </Card>
+                  </div>
+                </motion.div>
               );
             })}
           </div>
         )}
 
         {!loading && courses.length === 0 && (
-          <div className="text-center py-12">
-            <div className="text-gray-300">No courses available.</div>
-          </div>
+          <div className="text-center text-gray-400 py-10">No courses available right now.</div>
         )}
       </div>
     </div>
