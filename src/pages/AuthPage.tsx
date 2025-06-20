@@ -1,5 +1,5 @@
-
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -33,14 +33,14 @@ const AuthPage = () => {
 
       if (error) {
         toast({
-          title: "Error",
+          title: 'Error',
           description: error.message,
-          variant: "destructive"
+          variant: 'destructive'
         });
       } else {
         toast({
-          title: "Success",
-          description: isSignUp ? "Account created successfully!" : "Signed in successfully!"
+          title: 'Success',
+          description: isSignUp ? 'Account created successfully!' : 'Signed in successfully!'
         });
         if (!isSignUp) {
           navigate('/');
@@ -48,9 +48,9 @@ const AuthPage = () => {
       }
     } catch (error) {
       toast({
-        title: "Error",
-        description: "Something went wrong. Please try again.",
-        variant: "destructive"
+        title: 'Error',
+        description: 'Something went wrong. Please try again.',
+        variant: 'destructive'
       });
     } finally {
       setLoading(false);
@@ -69,16 +69,16 @@ const AuthPage = () => {
 
       if (error) {
         toast({
-          title: "Error",
+          title: 'Error',
           description: error.message,
-          variant: "destructive"
+          variant: 'destructive'
         });
       }
     } catch (error) {
       toast({
-        title: "Error",
-        description: "Something went wrong with Google sign in.",
-        variant: "destructive"
+        title: 'Error',
+        description: 'Something went wrong with Google sign in.',
+        variant: 'destructive'
       });
     } finally {
       setLoading(false);
@@ -86,74 +86,74 @@ const AuthPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background flex items-center justify-center px-4">
-      <Card className="w-full max-w-md bg-card border-border">
-        <CardHeader>
-          <CardTitle className="text-2xl text-center text-primary">
-            {isSignUp ? 'Create Account' : 'Welcome Back'}
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
+    <div className="min-h-screen bg-gradient-to-br from-[#0f0f0f] to-[#1c1c1c] flex items-center justify-center px-4">
+      <motion.div 
+        className="w-full max-w-md"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: 'easeOut' }}
+      >
+        <Card className="bg-[#111] border border-[#333] shadow-xl text-foreground">
+          <CardHeader>
+            <CardTitle className="text-2xl text-center text-white tracking-tight">
+              {isSignUp ? 'Create Account' : 'Welcome Back'}
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <form onSubmit={handleSubmit} className="space-y-4">
               <Input
                 type="email"
                 placeholder="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="bg-background border-border text-foreground"
+                className="bg-[#1c1c1c] border-[#333] text-white"
               />
-            </div>
-            <div>
               <Input
                 type="password"
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className="bg-background border-border text-foreground"
+                className="bg-[#1c1c1c] border-[#333] text-white"
               />
-            </div>
-            <Button
-              type="submit"
-              disabled={loading}
-              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
-            >
-              {loading ? 'Loading...' : (isSignUp ? 'Sign Up' : 'Sign In')}
-            </Button>
-          </form>
-          
-          <div className="mt-4">
-            <div className="relative">
-              <div className="absolute inset-0 flex items-center">
-                <span className="w-full border-t border-border" />
+              <Button
+                type="submit"
+                disabled={loading}
+                className="w-full bg-white text-black hover:bg-gray-200 transition"
+              >
+                {loading ? 'Loading...' : (isSignUp ? 'Sign Up' : 'Sign In')}
+              </Button>
+            </form>
+
+            <div className="mt-6">
+              <div className="relative flex items-center">
+                <div className="flex-grow border-t border-[#333]" />
+                <span className="mx-4 text-sm text-muted-foreground">OR</span>
+                <div className="flex-grow border-t border-[#333]" />
               </div>
-              <div className="relative flex justify-center text-xs uppercase">
-                <span className="bg-card px-2 text-muted-foreground">Or continue with</span>
-              </div>
+
+              <Button
+                onClick={handleGoogleSignIn}
+                disabled={loading}
+                variant="outline"
+                className="w-full mt-4 border-[#333] text-white hover:bg-[#222]"
+              >
+                Continue with Google
+              </Button>
             </div>
-            
-            <Button
-              onClick={handleGoogleSignIn}
-              disabled={loading}
-              variant="outline"
-              className="w-full mt-4 border-border hover:bg-muted"
-            >
-              Continue with Google
-            </Button>
-          </div>
-          
-          <div className="mt-4 text-center">
-            <button
-              onClick={() => setIsSignUp(!isSignUp)}
-              className="text-primary hover:underline"
-            >
-              {isSignUp ? 'Already have an account? Sign In' : "Don't have an account? Sign Up"}
-            </button>
-          </div>
-        </CardContent>
-      </Card>
+
+            <div className="mt-6 text-center">
+              <button
+                onClick={() => setIsSignUp(!isSignUp)}
+                className="text-sm text-muted-foreground hover:text-white transition"
+              >
+                {isSignUp ? 'Already have an account? Sign In' : "Don't have an account? Sign Up"}
+              </button>
+            </div>
+          </CardContent>
+        </Card>
+      </motion.div>
     </div>
   );
 };
