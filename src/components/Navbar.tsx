@@ -34,14 +34,14 @@ export const Navbar = () => {
       <div className="w-full px-4 sm:px-6 lg:px-8">
         <div className="relative flex items-center justify-center h-16 w-full">
 
-          {/* Thrive - Left */}
+          {/* Left: Thrive */}
           <div className="absolute left-0">
             <Link to="/" className="text-2xl font-bold text-primary">
               Thrive
             </Link>
           </div>
 
-          {/* Center Links */}
+          {/* Center: Nav Links */}
           <div className="hidden md:flex space-x-6 text-sm font-medium">
             <Link to="/" className="text-foreground hover:text-primary transition-colors">
               Home
@@ -66,8 +66,8 @@ export const Navbar = () => {
             </Link>
           </div>
 
-          {/* Profile - Right */}
-          <div className="absolute right-0">
+          {/* Right: Profile or Sign In (hidden on mobile) */}
+          <div className="absolute right-0 pr-2 hidden md:flex items-center">
             {user ? (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
@@ -93,7 +93,7 @@ export const Navbar = () => {
           </div>
 
           {/* Mobile Hamburger */}
-          <div className="md:hidden absolute right-0 pr-2">
+          <div className="absolute right-0 pr-2 md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="text-foreground hover:text-primary"
@@ -103,7 +103,7 @@ export const Navbar = () => {
           </div>
         </div>
 
-        {/* Mobile Nav */}
+        {/* Mobile Nav Menu */}
         {isOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
