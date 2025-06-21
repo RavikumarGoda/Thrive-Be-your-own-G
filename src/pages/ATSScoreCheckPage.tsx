@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { Navbar } from '@/components/Navbar';
 import { ExternalLink, Zap, Star, Shield } from 'lucide-react';
 
@@ -30,7 +30,7 @@ const tools = [
   },
 ];
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: {},
   show: {
     transition: {
@@ -39,26 +39,17 @@ const containerVariants = {
   },
 };
 
-const cardVariants = {
+const cardVariants: Variants = {
   hidden: { opacity: 0, y: 50, rotateX: 30 },
   show: {
     opacity: 1,
     y: 0,
     rotateX: 0,
     transition: {
-      type: 'spring',
+      type: 'spring' as const,
       damping: 20,
       stiffness: 150,
     },
-  },
-};
-
-const hoverVariants = {
-  hover: {
-    scale: 1.05,
-    rotate: -1,
-    boxShadow: '0 20px 30px rgba(0,0,0,0.2)',
-    transition: { type: 'spring', stiffness: 300 },
   },
 };
 
@@ -67,6 +58,7 @@ const ATSScoreCheckPage = () => {
     <div className="min-h-screen text-foreground bg-gradient-to-b from-slate-900 to-slate-950">
       <Navbar />
       <div className="container mx-auto px-4 py-24 max-w-5xl">
+        {/* Heading Animation */}
         <motion.div
           initial={{ opacity: 0, y: -40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -81,17 +73,22 @@ const ATSScoreCheckPage = () => {
           </p>
         </motion.div>
 
+        {/* Cards Animation */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="show"
           className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6"
         >
-          {tools.map((tool, index) => (
+          {tools.map((tool) => (
             <motion.div
               key={tool.name}
               variants={cardVariants}
-              whileHover="hover"
+              whileHover={{
+                scale: 1.05,
+                rotate: -1,
+                transition: { type: 'spring', stiffness: 300 },
+              }}
               onClick={() => window.open(tool.url, '_blank')}
               className="bg-slate-800 hover:bg-slate-700 border border-slate-700 p-6 rounded-2xl cursor-pointer flex flex-col items-start justify-between text-left transition-all group"
             >
@@ -111,6 +108,7 @@ const ATSScoreCheckPage = () => {
           ))}
         </motion.div>
 
+        {/* Footer Animation */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
