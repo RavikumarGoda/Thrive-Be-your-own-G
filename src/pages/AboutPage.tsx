@@ -37,7 +37,7 @@ const AboutPage = () => {
               Ravi Kumar Reddy Goda
             </h1>
             <p className="text-gray-400 mb-10 px-4 text-base md:text-lg">
-              CS undergrad • Builder of career platforms • Thrive-ing toward impact 🌱
+              CS undergrad • Thrive-ing toward impact 🌱
             </p>
 
             <div className="flex flex-wrap justify-center gap-6">
