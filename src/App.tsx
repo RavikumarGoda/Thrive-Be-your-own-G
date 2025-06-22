@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -15,6 +14,7 @@ import ResumeGuidePage from "./pages/ResumeGuidePage";
 import JobAlertsPage from "./pages/JobAlertsPage";
 import AboutPage from "./pages/AboutPage";
 import NotFound from "./pages/NotFound";
+import ScrollToTop from "./components/ScrollToTop"; // ✅ Added this line
 
 const queryClient = new QueryClient();
 
@@ -30,6 +30,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <ScrollToTop /> {/* ✅ Added this line */}
           <AuthProvider>
             <Routes>
               <Route path="/" element={<Index />} />
