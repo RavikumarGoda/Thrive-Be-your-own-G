@@ -37,19 +37,23 @@ Thrive is a career and learning support platform tailored for students and fresh
 ## Tech Stack
 
 ### 💻 Frontend
+
 - React – Component-based frontend  
 - Tailwind CSS – Utility-first styling  
 - JavaScript – Core logic  
+- Framer Motion – Smooth animations and transitions  
 
 ### 🛠️ Backend
-- Node.js / Flask / Django – REST API options  
-- PostgreSQL / MongoDB / Redis – Data storage  
-- AWS S3 – File storage (for resumes/resources)  
+
+- Supabase – Auth, PostgreSQL database, and real-time API  
+- Supabase Storage – File storage for resumes/resources  
+- Vercel – Frontend deployment with CI/CD  
 
 ### 🔗 Integrations
-- External ATS platforms – Resume scoring tools  
-- WhatsApp links – Job alert communities  
 
+- Google OAuth via Supabase – User authentication  
+- External ATS platforms – Resume scoring tools  
+- WhatsApp links – Job alert communities
 ---
 
 ## Getting Started
