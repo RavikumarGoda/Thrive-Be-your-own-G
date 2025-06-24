@@ -54,6 +54,13 @@ const CoursesPage = () => {
     return videoId ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg` : '/placeholder.svg';
   };
 
+  const getPracticeLink = (category: string) => {
+    if (category.toLowerCase() === 'dsa') {
+      return 'https://takeuforward.org/strivers-a2z-dsa-course/strivers-a2z-dsa-course-sheet-2/';
+    }
+    return 'https://www.codewithharry.com/tutorials';
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-900 to-slate-950 text-white">
       <Navbar />
@@ -78,6 +85,7 @@ const CoursesPage = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {courses.map((course, index) => {
               const thumbnailUrl = course.thumbnail_url || getVideoThumbnail(course.video_url);
+              const practiceUrl = getPracticeLink(course.category);
               return (
                 <motion.div
                   key={course.id}
@@ -140,11 +148,11 @@ const CoursesPage = () => {
                       </Button>
 
                       <Button
-                        onClick={() => window.open(course.video_url, '_blank')}
+                        onClick={() => window.open(practiceUrl, '_blank')}
                         variant="outline"
                         className="w-full border-gray-500 text-gray-200 hover:bg-slate-700"
                       >
-                        <ExternalLink size={16} /> Open Video
+                        <ExternalLink size={16} /> Practice
                       </Button>
                     </div>
                   </div>
