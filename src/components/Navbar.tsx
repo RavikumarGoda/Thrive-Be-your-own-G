@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Menu, X, User } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
@@ -15,7 +15,6 @@ export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, signOut } = useAuth();
   const navigate = useNavigate();
-  const location = useLocation();
 
   const handleProtectedRoute = (route: string) => {
     if (!user) {
@@ -24,8 +23,6 @@ export const Navbar = () => {
     }
     navigate(route);
   };
-
-  const isActive = (path: string) => location.pathname === path;
 
   const handleSignOut = async () => {
     await signOut();
@@ -46,25 +43,25 @@ export const Navbar = () => {
 
           {/* Center: Nav Links */}
           <div className="hidden md:flex space-x-6 text-sm font-medium">
-            <Link to="/" className={`${isActive('/') ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'} transition-colors`}>
+            <Link to="/" className="text-foreground hover:text-primary transition-colors">
               Home
             </Link>
-            <button onClick={() => handleProtectedRoute('/courses')} className={`${isActive('/courses') ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'} transition-colors`}>
+            <button onClick={() => handleProtectedRoute('/courses')} className="text-foreground hover:text-primary transition-colors">
               Courses
             </button>
-            <button onClick={() => handleProtectedRoute('/ats-score-check')} className={`${isActive('/ats-score-check') ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'} transition-colors`}>
+            <button onClick={() => handleProtectedRoute('/ats-score-check')} className="text-foreground hover:text-primary transition-colors">
               ATS
             </button>
-            <button onClick={() => handleProtectedRoute('/resources')} className={`${isActive('/resources') ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'} transition-colors`}>
+            <button onClick={() => handleProtectedRoute('/resources')} className="text-foreground hover:text-primary transition-colors">
               Notes
             </button>
-            <button onClick={() => handleProtectedRoute('/resume-guide')} className={`${isActive('/resume-guide') ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'} transition-colors`}>
+            <button onClick={() => handleProtectedRoute('/resume-guide')} className="text-foreground hover:text-primary transition-colors">
               Resume Guide
             </button>
-            <button onClick={() => handleProtectedRoute('/job-alerts')} className={`${isActive('/job-alerts') ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'} transition-colors`}>
+            <button onClick={() => handleProtectedRoute('/job-alerts')} className="text-foreground hover:text-primary transition-colors">
               Job Alerts
             </button>
-            <Link to="/about" className={`${isActive('/about') ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'} transition-colors`}>
+            <Link to="/about" className="text-foreground hover:text-primary transition-colors">
               About
             </Link>
           </div>
@@ -110,25 +107,25 @@ export const Navbar = () => {
         {isOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              <Link to="/" onClick={() => setIsOpen(false)} className={`block py-2 transition-colors ${isActive('/') ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'}`}>
+              <Link to="/" onClick={() => setIsOpen(false)} className="block py-2 text-foreground hover:text-primary transition-colors">
                 Home
               </Link>
-              <button onClick={() => { handleProtectedRoute('/courses'); setIsOpen(false); }} className={`block w-full text-left py-2 transition-colors ${isActive('/courses') ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'}`}>
+              <button onClick={() => { handleProtectedRoute('/courses'); setIsOpen(false); }} className="block w-full text-left py-2 text-foreground hover:text-primary transition-colors">
                 Courses
               </button>
-              <button onClick={() => { handleProtectedRoute('/ats-score-check'); setIsOpen(false); }} className={`block w-full text-left py-2 transition-colors ${isActive('/ats-score-check') ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'}`}>
+              <button onClick={() => { handleProtectedRoute('/ats-score-check'); setIsOpen(false); }} className="block w-full text-left py-2 text-foreground hover:text-primary transition-colors">
                 ATS
               </button>
-              <button onClick={() => { handleProtectedRoute('/resources'); setIsOpen(false); }} className={`block w-full text-left py-2 transition-colors ${isActive('/resources') ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'}`}>
+              <button onClick={() => { handleProtectedRoute('/resources'); setIsOpen(false); }} className="block w-full text-left py-2 text-foreground hover:text-primary transition-colors">
                 Notes
               </button>
-              <button onClick={() => { handleProtectedRoute('/resume-guide'); setIsOpen(false); }} className={`block w-full text-left py-2 transition-colors ${isActive('/resume-guide') ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'}`}>
+              <button onClick={() => { handleProtectedRoute('/resume-guide'); setIsOpen(false); }} className="block w-full text-left py-2 text-foreground hover:text-primary transition-colors">
                 Resume Guide
               </button>
-              <button onClick={() => { handleProtectedRoute('/job-alerts'); setIsOpen(false); }} className={`block w-full text-left py-2 transition-colors ${isActive('/job-alerts') ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'}`}>
+              <button onClick={() => { handleProtectedRoute('/job-alerts'); setIsOpen(false); }} className="block w-full text-left py-2 text-foreground hover:text-primary transition-colors">
                 Job Alerts
               </button>
-              <Link to="/about" onClick={() => setIsOpen(false)} className={`block py-2 transition-colors ${isActive('/about') ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'}`}>
+              <Link to="/about" onClick={() => setIsOpen(false)} className="block py-2 text-foreground hover:text-primary transition-colors">
                 About
               </Link>
 
