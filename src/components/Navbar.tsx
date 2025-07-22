@@ -42,7 +42,7 @@ export const Navbar = () => {
           </div>
 
           {/* Center: Nav Links */}
-          <div className="hidden md:flex space-x-6 text-sm font-medium">
+          <div className="hidden md:flex gap-6 text-sm font-medium">
             <Link to="/" className="text-foreground hover:text-primary transition-colors">
               Home
             </Link>
